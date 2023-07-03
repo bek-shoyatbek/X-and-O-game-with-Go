@@ -22,6 +22,12 @@ Restart:
 			var inp int
 		getInput:
 			fmt.Scan(&inp)
+			validInput := isValidInput(inp)
+			if !validInput {
+				fmt.Println("Wrong input")
+				time.Sleep(1 * time.Second)
+				goto Restart
+			}
 			isFree := isFree(inp, board)
 			if isFree {
 				board = Move(board, inp, role)
